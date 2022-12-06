@@ -67,6 +67,8 @@ Shader "Unlit/ScreenCutoutShader"
 				//	sin(length(p3d) / 25.0) * sin(p3d.x / 20.0) * sin(p3d.y / 15.0));
 				//fixed4 col = tex2D(_MainTex, float2(frac(sum), 0));
 				//return col;
+
+				float l = length(float2(i.screenPos.x, i.screenPos.y));
 			}
 			ENDCG
 		}
