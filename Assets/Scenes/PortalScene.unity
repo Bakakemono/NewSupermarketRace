@@ -3654,7 +3654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af8213ee99b3fa429352e7fa7936d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimedAngle: 180
+  pos: {x: 2, y: -0.00000008742278}
+  currentAngle: NaN
+  anglePos: 0
+  aimedAngle: 169
 --- !u!4 &2092114897
 Transform:
   m_ObjectHideFlags: 0
