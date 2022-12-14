@@ -36,6 +36,8 @@ Shader "Custom/FunnySpiral"
             float4 _MainTex_ST;
             float pi = 3.141592;
 
+
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -47,24 +49,21 @@ Shader "Custom/FunnySpiral"
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float relativePos = i.uv.xy - (_ScreenParams.xy / 2);
-                float angle = acos(dot(float2(-1, 0), relativePos) / length(relativePos));
-                float time = _Time * 4;
-                //angle += time * 10 / 360 * pi;
+                float2 center = float2(0.5, 0.5f);
+                float speed = 2.0f;
+                float amplitude = 0.5f;
+                float time = _Time * 100.0f;
+                // Calculate the distance from the current UV to the center of the image
+                float dist = length(i.uv.xy - center);
 
-                // sample the texture
+                // Calculate the water distortion effect using a sine wave
+                i.uv.x += cos(dist * speed + time) * amplitude;
+                i.uv.y += sin(dist + time) * amplitude;
+
                 fixed4 col = tex2D(
                     _MainTex,
-                    float2(
-                        length(relativePos) * sin(angle),
-                        length(relativePos) * cos(angle)
-                        ) + (_ScreenParams.xy / 2)
+                    i.uv.xy
                 );
-                
-                //fixed4 col = tex2D(
-                //    _MainTex,
-                //    i.uv.xy
-                //);
                 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
