@@ -46,8 +46,8 @@ public class PulsingTerrainBehavior : MonoBehaviour
 
         //Set light direction
         meshRenderer.material.SetVector(WorldSpaceLightDirection, _directionalLight.transform.forward * -1);
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10.0f);
-        FindObjectOfType<Camera>().GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10.0f);
+        //GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10.0f);
+        //FindObjectOfType<Camera>().GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10.0f);
     }
 
     private void Update() {
@@ -59,7 +59,7 @@ public class PulsingTerrainBehavior : MonoBehaviour
         }
 
         if(updateMesh) {
-            CreateMesh();
+            //CreateMesh();
             UpdateMesh();
             updateMesh = false;
         }
